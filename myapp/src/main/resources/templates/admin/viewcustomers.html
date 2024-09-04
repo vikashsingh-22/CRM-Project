@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="admin/adminparent::layout(~{::section})">
+  <head></head>
+  <body>
+    <section>
+    	<h2 class="text-center text-light">List Of Customers</h2>  
+    	<table class="table table-bordered text-light" style="width:90%;margin:auto">
+    		<thead>
+    			<tr>
+    				<th>Name</th>
+    				<th>Gender</th>
+    				<th>Address</th>
+    				<th>Contact No</th>
+    				<th>Email Address</th>
+    				<th>Registration Date</th>
+    				<th>Delete</th>
+    			</tr>
+    		</thead>
+    		
+    		<tbody>
+    			<tr th:each="customer: ${clist}">
+    				<td th:text="${customer.name}"></td>
+    				<td th:text="${customer.gender}"></td>
+    				<td th:text="${customer.address}"></td>
+    				<td th:text="${customer.contactno}"></td>
+    				<td th:text="${customer.emailaddress}"></td>
+    				<td th:text="${customer.regdate}"></td>
+    				<td>
+    					<a th:href="@{viewcustomers/delete(email=${customer.emailaddress})}">
+    						<button type="button" class="btn btn-primary" onclick="confirm('Are you sure ?')">Delete</button>
+    					</a>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>  
+    </section>
+  </body>
+</html>

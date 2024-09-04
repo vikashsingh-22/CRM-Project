@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="customer/customerparent::layout(~{::section})">
+<head></head>
+<body>
+	<section>
+		<h2 class="text-center text-light">View All Products</h2>
+		<div class="row">
+
+			<div class="col-md-3 mt-4" th:each="p: ${clist}">
+				<div class="card mx-2 rounded-2"
+					style="border: 1px solid rgb(235, 233, 233);">
+					<img th:src="@{'/images/' + ${p.filename}}" class="card-img-top"
+						height="230px" />
+					<div class="card-body">
+						<h5 class="card-title">
+							<span th:text="${p.id}"></span>. <span th:text="${p.productname}"></span>
+						</h5>
+						<p class="card-text" th:text="${p.description}"></p>
+						<!--  <p class="card-text"> <span class="text-success"><i class="fa-solid fa-star"></i> </span>Rating & Reviews</p> -->
+						<p class="fw-bold text-success">
+							<span class="text-white">Product Price : </span> ₹<span
+								th:text="${p.price}"></span>.00
+						</p>
+						<a href="#" class="btn btn-primary">Read More..</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+</html>

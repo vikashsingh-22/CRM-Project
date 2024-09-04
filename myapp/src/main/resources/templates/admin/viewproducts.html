@@ -1,0 +1,40 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="admin/adminparent::layout(~{::section})">
+  <head></head>
+  <body>
+    <section>
+    	<h2 class="text-center text-light">View All Products</h2>  
+    	<table class="table table-bordered text-light" style="width:90%;margin:auto">
+    		<thead>
+    			<tr>
+    				<th>Id</th>
+    				<th>Name</th>
+    				<th>Price</th>
+    				<th>Description</th>
+    				<th>Image</th>
+    				<th>Delete</th>
+    			</tr>
+    		</thead>
+    		
+    		<tbody>
+    			<tr th:each="p: ${clist}">
+    				<td th:text="${p.id}"></td>
+    				<td th:text="${p.productname}"></td>
+    				<td th:text="${p.price}"></td>
+    				<td th:text="${p.description}"></td>
+    				
+    				<td>
+    					<img th:src="@{'/images/' + ${p.filename}}" style="width:100px;height:100px;border-radius:0 0 0 0;" />
+    				</td>
+    				
+    				<td>
+    					<a th:href="@{viewproducts/delete(id=${p.id})}">
+    						<button type="button" class="btn btn-primary" onclick="confirm('Are you sure ?')">Delete</button>
+    					</a>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>  
+    </section>
+  </body>
+</html>

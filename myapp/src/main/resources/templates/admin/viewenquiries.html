@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="admin/adminparent::layout(~{::section})">
+  <head></head>
+  <body>
+    <section>
+    	<h2 class="text-center text-light">View All Enquiries</h2>  
+    	<table class="table table-bordered text-light" style="width:90%;margin:auto">
+    		<thead>
+    			<tr>
+    				<th>Id</th>
+    				<th>Name</th>
+    				<th>Contact No</th>
+    				<th>Subject</th>
+    				<th>Message</th>
+    				<th>Posted Date</th>
+    				<th>Delete</th>
+    			</tr>
+    		</thead>
+    		
+    		<tbody>
+    			<tr th:each="enq: ${clist}">
+    				<td th:text="${enq.id}"></td>
+    				<td th:text="${enq.name}"></td>
+    				<td th:text="${enq.contactno}"></td>
+    				<td th:text="${enq.subject}"></td>
+    				<td th:text="${enq.message}"></td>
+    				<td th:text="${enq.posteddate}"></td>
+    				<td>
+    					<a th:href="@{viewenquiries/delete(id=${enq.id})}">
+    						<button type="button" class="btn btn-primary" onclick="confirm('Are you sure ?')">Delete</button>
+    					</a>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>  
+    </section>
+  </body>
+</html>
